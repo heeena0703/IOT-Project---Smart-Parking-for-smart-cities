@@ -1,7 +1,7 @@
 import os
 import json
 import queue
-from flask import Flask, jsonify, request, abort, Response, stream_with_context
+from flask import Flask, jsonify, request, abort, Response, stream_with_context, send_from_directory
 
 from db import init_db, get_all_spots, get_spot, set_spot
 
@@ -123,6 +123,11 @@ def create_app():
     @app.route('/', methods=['GET'])
     def index():
         return app.send_static_file('index.html')
+
+    # serve style1.css with a forced correct MIME type to avoid some browsers ignoring
+    @app.route('/static/style1.css')
+    def style1():
+        return send_from_directory(app.static_folder, 'style1.css', mimetype='text/css')
 
     return app
 

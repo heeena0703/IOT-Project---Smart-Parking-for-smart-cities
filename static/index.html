@@ -3,42 +3,30 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Smart Parking - Demo</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px
-        }
-
-        .spot {
-            display: inline-block;
-            width: 120px;
-            height: 120px;
-            margin: 10px;
-            text-align: center;
-            vertical-align: top;
-            border-radius: 8px
-        }
-
-        .free {
-            background: #dff0d8
-        }
-
-        .occupied {
-            background: #f2dede
-        }
-
-        button {
-            margin-top: 8px
-        }
-    </style>
+    <title>Smart Parking</title>
+    <link rel="stylesheet" href="/static/style1.css?v=2">
 </head>
 
 <body>
-    <h1>Smart Parking - Demo</h1>
-    <div id="spots"></div>
+    <div class="night"></div>
+    <div class="app-wrap">
+        <header class="app-header">
+            <div style="flex:1">
+                <h1>Smart Parking</h1>
+                <p class="sub">Live status of parking spots — updates in real time</p>
+            </div>
+            <div class="theme-controls">
+                <button id="theme-toggle" class="ghost" aria-pressed="false"
+                    title="Toggle light / dark theme">🌙</button>
+            </div>
+        </header>
 
-    <script src="/static/app.js"></script>
+        <main>
+            <section id="spots" class="spots-grid" aria-live="polite"></section>
+        </main>
+    </div>
+
+    <script src="/static/app.js?v=2"></script>
 </body>
 
 </html>

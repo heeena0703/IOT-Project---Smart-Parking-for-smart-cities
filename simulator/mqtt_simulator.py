@@ -45,7 +45,7 @@ if __name__ == '__main__':
     p.add_argument('--broker', default='localhost')
     p.add_argument('--port', type=int, default=1883)
     p.add_argument('--num-spots', type=int, default=5)
-    p.add_argument('--interval', type=float, default=2.0)
+    p.add_argument('--interval', type=float, default=1.0)
     p.add_argument('--topic-prefix', default='parking/spot')
     args = p.parse_args()
     run(args.broker, args.port, args.num_spots, args.interval, args.topic_prefix)
