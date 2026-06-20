@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Virtual environment
+.venv/
+
+# SQLite db
+data/
+*.db
+
+# Node-RED data
+nodered_data/
+
+# Docker
+docker-compose.override.yml
+
+# IDE / Editor
+.vscode/
+.idea/
