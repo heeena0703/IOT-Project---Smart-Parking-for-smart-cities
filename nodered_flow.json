@@ -1,0 +1,71 @@
+[
+    {
+        "id": "mqtt-in",
+        "type": "mqtt in",
+        "z": "flow",
+        "name": "MQTT Parking",
+        "topic": "parking/spot/+",
+        "qos": "0",
+        "broker": "mosquitto",
+        "x": 120,
+        "y": 80,
+        "wires": [["http-request"]]
+    },
+    {
+        "id": "http-request",
+        "type": "http request",
+        "z": "flow",
+        "name": "Forward to Flask",
+        "method": "POST",
+        "ret": "txt",
+        "url": "http://host.docker.internal:5000/api/sensor",
+        "x": 360,
+        "y": 80,
+        "wires": [["debug"]]
+    },
+    {
+        "id": "debug",
+        "type": "debug",
+        "z": "flow",
+        "name": "Debug",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 560,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "reserve-ui",
+        "type": "http in",
+        "z": "flow",
+        "name": "Reserve endpoint",
+        "url": "/reserve",
+        "method": "post",
+        "x": 140,
+        "y": 220,
+        "wires": [["reserve-call"]]
+    },
+    {
+        "id": "reserve-call",
+        "type": "http request",
+        "z": "flow",
+        "name": "Call Flask Reserve",
+        "method": "POST",
+        "ret": "txt",
+        "url": "http://host.docker.internal:5000/api/spots/1/reserve",
+        "x": 380,
+        "y": 220,
+        "wires": [["http-response"]]
+    },
+    {
+        "id": "http-response",
+        "type": "http response",
+        "z": "flow",
+        "name": "HTTP Response",
+        "statusCode": "200",
+        "x": 620,
+        "y": 220,
+        "wires": []
+    }
+]
